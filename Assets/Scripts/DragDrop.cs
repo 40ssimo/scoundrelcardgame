@@ -4,10 +4,15 @@ using UnityEngine.EventSystems;
 
 public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
+    [SerializeField]
     private RectTransform _rectTransform;
+    [SerializeField]
+    private GameObject _mainCanvas;
+    private static string MAINCANVAS = "Main Canvas";
 
     private void Awake()
     {
+        _mainCanvas = GameObject.FindGameObjectWithTag(MAINCANVAS);
         CardInstance cardInstance = GetComponent<CardInstance>();
         _rectTransform = cardInstance.GetCardImage().GetComponent<RectTransform>();
     }
@@ -15,6 +20,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     public void OnPointerDown(PointerEventData eventData)
     {
         Debug.Log("OnPointerDown");
+        transform.SetParent(_mainCanvas.transform.transform);
     }
 
     public void OnBeginDrag(PointerEventData eventData)
