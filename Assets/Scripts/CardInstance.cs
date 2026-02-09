@@ -20,12 +20,14 @@ public class CardInstance : MonoBehaviour
     {
         SetupCardData();
     }
-
-    private void SetupCardData()
+    
+    public void SetupCardData()
     {
         cardValue = cardData.cardValue;
         cardHouse = cardData.cardHouse;
         cardFunction = cardData.cardFunction;
         cardImage.sprite = cardData.cardImage;
     }
+    
+    public Image GetCardImage(){ return  cardImage;}
 }
