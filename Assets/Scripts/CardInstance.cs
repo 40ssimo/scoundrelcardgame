@@ -30,4 +30,6 @@ public class CardInstance : MonoBehaviour
     }
     
     public Image GetCardImage(){ return  cardImage;}
+    public CardData.House GetCardHouse() { return cardHouse; }
+    public CardData.CardFunction GetCardFunction() { return cardFunction; }
 }

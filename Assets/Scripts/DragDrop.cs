@@ -2,26 +2,29 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class DragDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
+    [SerializeField] 
+    private CardInstance _cardInstance;
     [SerializeField]
     private RectTransform _rectTransform;
+    [SerializeField] 
+    private CanvasGroup _canvasGroup;
     [SerializeField]
     private GameObject _mainCanvas;
     
     private static string MAINCANVAS = "Main Canvas";
-
-    private void Awake()
+    
+    private void OnEnable()
     {
         _mainCanvas = GameObject.FindGameObjectWithTag(MAINCANVAS);
-        CardInstance cardInstance = GetComponent<CardInstance>();
-        _rectTransform = cardInstance.GetCardImage().GetComponent<RectTransform>();
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
         Debug.Log("OnPointerDown");
-        transform.SetParent(_mainCanvas.transform.transform);
+        _canvasGroup.blocksRaycasts = false;
+        transform.SetParent(_mainCanvas.transform);
         transform.SetAsLastSibling();
     }
 
@@ -39,5 +42,21 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     public void OnEndDrag(PointerEventData eventData)
     {
         Debug.Log("OnEndDrag");
+    }
+    
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        GameObject detectedArea = eventData.pointerCurrentRaycast.gameObject;
+        
+        CheckArea(_cardInstance, detectedArea);
+    }
+
+    public void CheckArea(CardInstance cardInstance, GameObject area)
+    {
+        if (cardInstance.GetCardFunction() == CardData.CardFunction.Enemy && (area.CompareTag("Weapon Area") || area.CompareTag("Barehand Area")))
+        {
+            transform.SetParent(area.transform);
+            transform.SetAsLastSibling();
+        }
     }
 }

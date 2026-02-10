@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - Main Canvas
+  - Dungeon Area
+  - Weapon Area
   layers:
   - Default
   - TransparentFX
