@@ -8,6 +8,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     private RectTransform _rectTransform;
     [SerializeField]
     private GameObject _mainCanvas;
+    
     private static string MAINCANVAS = "Main Canvas";
 
     private void Awake()
@@ -21,6 +22,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     {
         Debug.Log("OnPointerDown");
         transform.SetParent(_mainCanvas.transform.transform);
+        transform.SetAsLastSibling();
     }
 
     public void OnBeginDrag(PointerEventData eventData)

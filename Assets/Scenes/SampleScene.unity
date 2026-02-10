@@ -397,6 +397,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4227568377932972259, guid: 28f31e468b0af454c85df55e318e5dc5, type: 3}
+      propertyPath: m_Alpha
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4551043894735632751, guid: 28f31e468b0af454c85df55e318e5dc5, type: 3}
       propertyPath: m_Name
       value: CardPrefab (4)
@@ -750,9 +754,9 @@ RectTransform:
   - {fileID: 1459643211}
   - {fileID: 1297148556}
   - {fileID: 1781219451}
-  - {fileID: 736561831}
   - {fileID: 1957676202}
   - {fileID: 728888501}
+  - {fileID: 736561831}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -914,6 +918,7 @@ GameObject:
   - component: {fileID: 1297148556}
   - component: {fileID: 1297148558}
   - component: {fileID: 1297148557}
+  - component: {fileID: 1297148559}
   m_Layer: 5
   m_Name: Dungeon Card Area
   m_TagString: Untagged
@@ -982,6 +987,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1297148555}
   m_CullTransparentMesh: 1
+--- !u!225 &1297148559
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297148555}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1459643210
 GameObject:
   m_ObjectHideFlags: 0
@@ -1146,8 +1163,9 @@ GameObject:
   - component: {fileID: 1781219451}
   - component: {fileID: 1781219453}
   - component: {fileID: 1781219452}
+  - component: {fileID: 1781219454}
   m_Layer: 5
-  m_Name: Weapon
+  m_Name: Weapon Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1211,6 +1229,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1781219450}
   m_CullTransparentMesh: 1
+--- !u!225 &1781219454
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781219450}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1957676201
 GameObject:
   m_ObjectHideFlags: 0
