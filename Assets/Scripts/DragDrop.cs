@@ -12,12 +12,22 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
     private CanvasGroup _canvasGroup;
     [SerializeField]
     private GameObject _mainCanvas;
+
+    [SerializeField] 
+    private Vector2 _initialRectTransform;
+
+    [SerializeField] 
+    private GameObject _initialParent;
     
-    private static string MAINCANVAS = "Main Canvas";
+    private static string MAIN_CANVAS = "Main Canvas";
+    private static string WEAPON_AREA = "Weapon Area";
+    private static string BAREHAND_AREA = "Barehand Area";
     
     private void OnEnable()
     {
-        _mainCanvas = GameObject.FindGameObjectWithTag(MAINCANVAS);
+        _initialRectTransform = _rectTransform.anchoredPosition;
+        _initialParent = transform.parent.gameObject;
+        _mainCanvas = GameObject.FindGameObjectWithTag(MAIN_CANVAS);
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -53,10 +63,18 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
 
     public void CheckArea(CardInstance cardInstance, GameObject area)
     {
-        if (cardInstance.GetCardFunction() == CardData.CardFunction.Enemy && (area.CompareTag("Weapon Area") || area.CompareTag("Barehand Area")))
+        // Check "Weapon Area" or "Barehand Area"
+        if(cardInstance.GetCardFunction() == CardData.CardFunction.Enemy && (area.CompareTag(WEAPON_AREA) || area.CompareTag(BAREHAND_AREA)))
         {
             transform.SetParent(area.transform);
             transform.SetAsLastSibling();
+        } else
+        {
+            // back to initial position and parent if raycast doesn't detect any area
+            transform.SetParent(_initialParent.transform);
+            transform.SetAsLastSibling();
+            _rectTransform.anchoredPosition = _initialRectTransform;
+            _canvasGroup.blocksRaycasts = true;
         }
     }
 }
