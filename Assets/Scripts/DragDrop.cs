@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Random = UnityEngine.Random;
 
 public class DragDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
@@ -17,7 +18,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
     private Vector2 _initialRectTransform;
 
     [SerializeField] 
-    private GameObject _initialParent;
+    private GameObject _currentArea;
     
     private static string MAIN_CANVAS = "Main Canvas";
     private static string WEAPON_AREA = "Weapon Area";
@@ -26,7 +27,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
     private void OnEnable()
     {
         _initialRectTransform = _rectTransform.anchoredPosition;
-        _initialParent = transform.parent.gameObject;
+        _currentArea = transform.parent.gameObject;
         _mainCanvas = GameObject.FindGameObjectWithTag(MAIN_CANVAS);
     }
 
@@ -63,15 +64,63 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
 
     public void CheckArea(CardInstance cardInstance, GameObject area)
     {
-        // Check "Weapon Area" or "Barehand Area"
-        if(cardInstance.GetCardFunction() == CardData.CardFunction.Enemy && (area.CompareTag(WEAPON_AREA) || area.CompareTag(BAREHAND_AREA)))
+        // [WEAPON AREA]
+        
+        // "Enemy Card" Check [WEAPON AREA]
+        if(cardInstance.GetCardFunction() == CardData.CardFunction.Enemy && (area.CompareTag(WEAPON_AREA)))
         {
-            transform.SetParent(area.transform);
-            transform.SetAsLastSibling();
-        } else
+            area.TryGetComponent(out WeaponArea weaponArea);
+            transform.SetParent(weaponArea.KilledEnemyPosition.transform);
+            
+            if (weaponArea.LastVictim == null)
+            {
+                _rectTransform.anchoredPosition = Vector2.zero;
+                transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+                _currentArea = area;
+                weaponArea.LastVictim = _cardInstance;
+                weaponArea.VictimCount += 1;
+                weaponArea.CurrentVictimCardPosition +=  weaponArea.GetVictimCardInterval();
+            }
+            else
+            {
+                _rectTransform.anchoredPosition = Vector2.zero;
+                transform.SetLocalPositionAndRotation(weaponArea.CurrentVictimCardPosition, Quaternion.identity);
+                
+                weaponArea.CurrentVictimCardPosition +=  weaponArea.GetVictimCardInterval();
+                
+                _currentArea = area;
+                weaponArea.LastVictim = _cardInstance;
+                weaponArea.VictimCount += 1;
+            }
+            
+            //TO DO : make calculation later
+            return;
+        }
+        
+        // "Weapon Card" Check [WEAPON AREA]
+        if(cardInstance.GetCardFunction() == CardData.CardFunction.Weapon && area.CompareTag(WEAPON_AREA))
+        {
+            area.TryGetComponent(out WeaponArea weaponArea);
+            weaponArea.CurrentWeapon = cardInstance;
+            transform.SetParent(weaponArea.WeaponPosition.transform);
+            _rectTransform.anchoredPosition = Vector2.zero;
+            transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+            _currentArea = area;
+            return;
+        }
+        
+        // // Check "Weapon Area" or "Barehand Area" for "Enemy Card"
+        // if(cardInstance.GetCardFunction() == CardData.CardFunction.Enemy && (area.CompareTag(WEAPON_AREA) || area.CompareTag(BAREHAND_AREA)))
+        // {
+        //     transform.SetParent(area.transform);
+        //     transform.SetAsLastSibling();
+        //     _currentArea = area;
+        // }
+        
+        else
         {
             // back to initial position and parent if raycast doesn't detect any area
-            transform.SetParent(_initialParent.transform);
+            transform.SetParent(_currentArea.transform);
             transform.SetAsLastSibling();
             _rectTransform.anchoredPosition = _initialRectTransform;
             _canvasGroup.blocksRaycasts = true;

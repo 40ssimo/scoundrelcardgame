@@ -950,8 +950,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1613453915}
+  m_Children: []
   m_Father: {fileID: 1781219451}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -959,68 +958,6 @@ RectTransform:
   m_AnchoredPosition: {x: -300, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1001 &1288172971
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1258254618}
-    m_Modifications:
-    - target: {fileID: 811357006216509375, guid: 28f31e468b0af454c85df55e318e5dc5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 811357006216509375, guid: 28f31e468b0af454c85df55e318e5dc5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 811357006216509375, guid: 28f31e468b0af454c85df55e318e5dc5, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 811357006216509375, guid: 28f31e468b0af454c85df55e318e5dc5, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 811357006216509375, guid: 28f31e468b0af454c85df55e318e5dc5, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 811357006216509375, guid: 28f31e468b0af454c85df55e318e5dc5, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 811357006216509375, guid: 28f31e468b0af454c85df55e318e5dc5, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 811357006216509375, guid: 28f31e468b0af454c85df55e318e5dc5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 811357006216509375, guid: 28f31e468b0af454c85df55e318e5dc5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 811357006216509375, guid: 28f31e468b0af454c85df55e318e5dc5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4227568377932972259, guid: 28f31e468b0af454c85df55e318e5dc5, type: 3}
-      propertyPath: m_BlocksRaycasts
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4551043894735632751, guid: 28f31e468b0af454c85df55e318e5dc5, type: 3}
-      propertyPath: m_Name
-      value: CardPrefab
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2818604349078263757, guid: 28f31e468b0af454c85df55e318e5dc5, type: 3}
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 28f31e468b0af454c85df55e318e5dc5, type: 3}
 --- !u!1 &1297148555
 GameObject:
   m_ObjectHideFlags: 0
@@ -1033,6 +970,7 @@ GameObject:
   - component: {fileID: 1297148558}
   - component: {fileID: 1297148557}
   - component: {fileID: 1297148559}
+  - component: {fileID: 1297148560}
   m_Layer: 5
   m_Name: Dungeon Area
   m_TagString: Dungeon Area
@@ -1113,6 +1051,22 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1297148560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297148555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a83425acaab2af94b8c68c41a4ba73c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _firstCardPosition: {fileID: 862259571}
+  _secondCardPosition: {fileID: 44291975}
+  _thirdCardPosition: {fileID: 1835803521}
+  _fourthCardPosition: {fileID: 1191771529}
 --- !u!1 &1459643210
 GameObject:
   m_ObjectHideFlags: 0
@@ -1188,11 +1142,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1459643210}
   m_CullTransparentMesh: 1
---- !u!4 &1613453915 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 811357006216509375, guid: 28f31e468b0af454c85df55e318e5dc5, type: 3}
-  m_PrefabInstance: {fileID: 1288172971}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1675599840
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1248,7 +1197,7 @@ PrefabInstance:
     - target: {fileID: 9138596775857688080, guid: 28f31e468b0af454c85df55e318e5dc5, type: 3}
       propertyPath: cardData
       value: 
-      objectReference: {fileID: 11400000, guid: e73bf83a8befd5148ac4b6657a1e91e7, type: 2}
+      objectReference: {fileID: 11400000, guid: dd8246a9bc504254b886c3dc4063f78d, type: 2}
     - target: {fileID: 9138596775857688080, guid: 28f31e468b0af454c85df55e318e5dc5, type: 3}
       propertyPath: cardHouse
       value: 0
@@ -1278,6 +1227,7 @@ GameObject:
   - component: {fileID: 1781219453}
   - component: {fileID: 1781219452}
   - component: {fileID: 1781219454}
+  - component: {fileID: 1781219455}
   m_Layer: 5
   m_Name: Weapon Area
   m_TagString: Weapon Area
@@ -1356,6 +1306,24 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1781219455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781219450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7f4ba62d46d5634d9aa1826a45f7874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weaponPosition: {fileID: 1258254617}
+  _killedEnemyPosition: {fileID: 896223602}
+  _currentWeapon: {fileID: 0}
+  _lastVictim: {fileID: 0}
+  _victimCount: 0
+  _currentVictimCardPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &1783424480
 GameObject:
   m_ObjectHideFlags: 0
