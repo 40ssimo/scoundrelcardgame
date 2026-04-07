@@ -280,22 +280,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CardPrefab (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 9138596775857688080, guid: 28f31e468b0af454c85df55e318e5dc5, type: 3}
-      propertyPath: cardData
-      value: 
-      objectReference: {fileID: 11400000, guid: e1f3fce53165b7f4884fc150d8a21b3e, type: 2}
-    - target: {fileID: 9138596775857688080, guid: 28f31e468b0af454c85df55e318e5dc5, type: 3}
-      propertyPath: cardHouse
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9138596775857688080, guid: 28f31e468b0af454c85df55e318e5dc5, type: 3}
-      propertyPath: cardValue
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 9138596775857688080, guid: 28f31e468b0af454c85df55e318e5dc5, type: 3}
-      propertyPath: cardFunction
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1483,13 +1467,8 @@ PrefabInstance:
     - target: {fileID: 9138596775857688080, guid: 28f31e468b0af454c85df55e318e5dc5, type: 3}
       propertyPath: cardData
       value: 
-      objectReference: {fileID: 11400000, guid: 4e62bca9dfe0f3f41a4cd5913a086c37, type: 2}
-    - target: {fileID: 9138596775857688080, guid: 28f31e468b0af454c85df55e318e5dc5, type: 3}
-      propertyPath: cardValue
-      value: 5
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2818604349078263757, guid: 28f31e468b0af454c85df55e318e5dc5, type: 3}
+      objectReference: {fileID: 11400000, guid: e73bf83a8befd5148ac4b6657a1e91e7, type: 2}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

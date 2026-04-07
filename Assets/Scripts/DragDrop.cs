@@ -33,6 +33,16 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        //Check for Heart Card
+        GameObject detectedCard = eventData.pointerCurrentRaycast.gameObject;
+        detectedCard.TryGetComponent(out CardPrefabAccess cardPrefabAccess);
+        cardPrefabAccess.CardPrefab.TryGetComponent(out CardInstance cardInstance);
+        if (cardInstance != null && cardInstance.GetCardFunction() == CardData.CardFunction.Heal)
+        {
+            detectedCard.gameObject.SetActive(false);
+            return;
+        }
+        
         Debug.Log("OnPointerDown");
         _canvasGroup.blocksRaycasts = false;
         transform.SetParent(_mainCanvas.transform);
