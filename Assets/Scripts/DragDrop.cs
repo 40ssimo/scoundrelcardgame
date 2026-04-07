@@ -119,13 +119,14 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
             return;
         }
         
-        // // Check "Weapon Area" or "Barehand Area" for "Enemy Card"
-        // if(cardInstance.GetCardFunction() == CardData.CardFunction.Enemy && (area.CompareTag(WEAPON_AREA) || area.CompareTag(BAREHAND_AREA)))
-        // {
-        //     transform.SetParent(area.transform);
-        //     transform.SetAsLastSibling();
-        //     _currentArea = area;
-        // }
+        //[BAREHAND AREA]
+        
+        // "Enemy Card" Check [BAREHAND AREA]
+        if (cardInstance.GetCardFunction() == CardData.CardFunction.Enemy && area.CompareTag(BAREHAND_AREA))
+        {
+            cardInstance.gameObject.SetActive(false);
+            return;
+        }
         
         else
         {

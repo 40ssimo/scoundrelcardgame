@@ -525,7 +525,7 @@ GameObject:
   - component: {fileID: 574121554}
   m_Layer: 5
   m_Name: Barehand Area
-  m_TagString: Weapon Area
+  m_TagString: Barehand Area
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
